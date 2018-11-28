@@ -1,5 +1,5 @@
-from series import fibonacci
-from series import lucas
+from series import fibonacci, lucas, sum_series
+import pytest
 
 def test_assert_true():
   """A quick proof of life to make sure the configuration is correct
@@ -92,3 +92,29 @@ def test_lucas7():
   expected = 29
   assert lucas(initial) == expected
 
+def test_sum_series_fibonacci():
+  initial = 7
+  expected = 13
+  assert sum_series(initial) == expected
+
+def test_sum_series_lucas():
+  initial = 7
+  first = 2
+  second = 1
+  expected = 29
+  assert sum_series(initial, first, second) == expected
+
+def test_fibonacci_input_validation():
+  actual = 3.5
+  with pytest.raises(TypeError):
+    fibonacci(actual)
+
+def test_lucas_input_validation():
+  actual = 1.5
+  with pytest.raises(TypeError):
+    lucas(actual)
+
+def test_fibonacci_string_input():
+  actual = 'jerks'
+  with pytest.raises(TypeError):
+    fibonacci(actual)
