@@ -1,3 +1,5 @@
+import sys
+
 def fibonacci(n):
   if type(n) is not int:
     raise TypeError('Argument must be an integer')
@@ -34,10 +36,29 @@ def sum_series(n, first = 0, second = 1):
 if __name__ == "__main__":
   print('This module defines functions that implement mathematical series')
   print('...')
-  print('\n fibonacci(n):\n')
+  print('if at any time you wish to exit, type "quit" or use the keyboard shortcut control-c')
+  print('\nfibonacci(n):\n')
   print('Returns the nth value in the fibonacci series\n')
-  while True:
-    prompt = input().split('(')
-    n = prompt[1].split(')')
-    print(int(n[0]))
+  print('lucas(n):\n')
+  print('Returns the nth value in the lucas number series\n')
+  print('sum_series(n):\n')
+  print('If called with one parameter, returns the nth value in the fibonacci series;\nif called with optional parameters 2 and 1, returns the nth value in the lucas number series\n')
 
+  try:
+    while True:
+      prompt = input()
+      if prompt == 'quit':
+        sys.exit()
+      prompt = prompt.split('(')
+      if prompt[0] == 'fibonacci':
+        n = prompt[1].split(')')
+        print(fibonacci(n = int(n[0])), '\n')
+      elif prompt[0] == 'lucas':
+        n = prompt[1].split(')')
+        print(lucas(n = int(n[0])), '\n')
+      elif prompt[0] == 'sum_series':
+        n = prompt[1].split(')')
+        print(sum_series(n = int(n[0])), '\n')
+
+  except KeyboardInterrupt:
+      exit()
