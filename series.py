@@ -34,12 +34,15 @@ def sum_series(n, first = 0, second = 1):
   """Computes either a lucas or fibonacci number depending on if optional parameters of (2, 1) are passed in
      By default, computes a fibonacci number
   """
-  if first == 2 and second == 1:
+  if first == 0 and second == 1:
+    return fibonacci(n)
+  elif first + second == lucas(n):
     return lucas(n)
     # When given optional parameters are passed in, sum_series returns the appropriate lucas number
-
-  return fibonacci(n)
-  # Without the optional params, sum_series returns the appropriate fibonacci number
+  elif first + second == fibonacci(n):
+    return fibonacci(n)
+  else:
+    return "optional parameters are neither fibonacci nor lucas number inputs"
 
 if __name__ == "__main__":
   """An unholy monstrosity that allows the user to compute fibonacci, lucas, and sum_series numbers depending on input
