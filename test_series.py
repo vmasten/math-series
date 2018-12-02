@@ -107,8 +107,8 @@ def test_sum_series_lucas():
   """Then, sum_series is tested with an expected lucas() output
   """
   initial = 7
-  first = 2
-  second = 1
+  first = 11
+  second = 18
   expected = 29
   assert sum_series(initial, first, second) == expected
 
